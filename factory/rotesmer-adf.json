@@ -1,0 +1,9 @@
+{
+	"name": "rotesmer-adf",
+	"location": "australiaeast",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "8bdbca56-cc48-4cf6-bc70-47737757ff45",
+		"tenantId": "16b3c013-d300-468d-ac64-7eda0820b6d3"
+	}
+}

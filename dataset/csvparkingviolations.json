@@ -1,0 +1,196 @@
+{
+	"name": "csvparkingviolations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "foxaueast",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileSystem": "csv-parking-violations"
+			},
+			"columnDelimiter": ",",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": [
+			{
+				"name": "Summons Number",
+				"type": "String"
+			},
+			{
+				"name": "Plate ID",
+				"type": "String"
+			},
+			{
+				"name": "Registration State",
+				"type": "String"
+			},
+			{
+				"name": "Plate Type",
+				"type": "String"
+			},
+			{
+				"name": "Issue Date",
+				"type": "String"
+			},
+			{
+				"name": "Violation Code",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle Body Type",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle Make",
+				"type": "String"
+			},
+			{
+				"name": "Issuing Agency",
+				"type": "String"
+			},
+			{
+				"name": "Street Code1",
+				"type": "String"
+			},
+			{
+				"name": "Street Code2",
+				"type": "String"
+			},
+			{
+				"name": "Street Code3",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle Expiration Date",
+				"type": "String"
+			},
+			{
+				"name": "Violation Location",
+				"type": "String"
+			},
+			{
+				"name": "Violation Precinct",
+				"type": "String"
+			},
+			{
+				"name": "Issuer Precinct",
+				"type": "String"
+			},
+			{
+				"name": "Issuer Code",
+				"type": "String"
+			},
+			{
+				"name": "Issuer Command",
+				"type": "String"
+			},
+			{
+				"name": "Issuer Squad",
+				"type": "String"
+			},
+			{
+				"name": "Violation Time",
+				"type": "String"
+			},
+			{
+				"name": "Time First Observed",
+				"type": "String"
+			},
+			{
+				"name": "Violation County",
+				"type": "String"
+			},
+			{
+				"name": "Violation In Front Of Or Opposite",
+				"type": "String"
+			},
+			{
+				"name": "House Number",
+				"type": "String"
+			},
+			{
+				"name": "Street Name",
+				"type": "String"
+			},
+			{
+				"name": "Intersecting Street",
+				"type": "String"
+			},
+			{
+				"name": "Date First Observed",
+				"type": "String"
+			},
+			{
+				"name": "Law Section",
+				"type": "String"
+			},
+			{
+				"name": "Sub Division",
+				"type": "String"
+			},
+			{
+				"name": "Violation Legal Code",
+				"type": "String"
+			},
+			{
+				"name": "Days Parking In Effect    ",
+				"type": "String"
+			},
+			{
+				"name": "From Hours In Effect",
+				"type": "String"
+			},
+			{
+				"name": "To Hours In Effect",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle Color",
+				"type": "String"
+			},
+			{
+				"name": "Unregistered Vehicle?",
+				"type": "String"
+			},
+			{
+				"name": "Vehicle Year",
+				"type": "String"
+			},
+			{
+				"name": "Meter Number",
+				"type": "String"
+			},
+			{
+				"name": "Feet From Curb",
+				"type": "String"
+			},
+			{
+				"name": "Violation Post Code",
+				"type": "String"
+			},
+			{
+				"name": "Violation Description",
+				"type": "String"
+			},
+			{
+				"name": "No Standing or Stopping Violation",
+				"type": "String"
+			},
+			{
+				"name": "Hydrant Violation",
+				"type": "String"
+			},
+			{
+				"name": "Double Parking Violation",
+				"type": "String"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
