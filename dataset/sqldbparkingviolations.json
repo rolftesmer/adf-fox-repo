@@ -1,0 +1,12 @@
+{
+	"name": "sqldbparkingviolations",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "foxaueastsql",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": []
+	}
+}
