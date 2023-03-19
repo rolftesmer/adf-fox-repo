@@ -8,6 +8,9 @@
 		"foxaueast_accountKey": {
 			"value": ""
 		},
+		"foxaueastsql_connectionString": {
+			"value": ""
+		},
 		"foxaueast_properties_typeProperties_url": {
 			"value": "https://foxaueast.dfs.core.windows.net/"
 		}

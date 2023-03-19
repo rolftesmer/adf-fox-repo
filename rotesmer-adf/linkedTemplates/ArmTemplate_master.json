@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'foxaueast'"
 		},
+		"foxaueastsql_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'foxaueastsql'"
+		},
 		"foxaueast_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://foxaueast.dfs.core.windows.net/"
@@ -44,6 +48,9 @@
 					},
 					"foxaueast_accountKey": {
 						"value": "[parameters('foxaueast_accountKey')]"
+					},
+					"foxaueastsql_connectionString": {
+						"value": "[parameters('foxaueastsql_connectionString')]"
 					},
 					"foxaueast_properties_typeProperties_url": {
 						"value": "[parameters('foxaueast_properties_typeProperties_url')]"
