@@ -8,7 +8,8 @@
 		},
 		"parameters": {
 			"Container": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "csv-parking-violations"
 			},
 			"Directory": {
 				"type": "String"
