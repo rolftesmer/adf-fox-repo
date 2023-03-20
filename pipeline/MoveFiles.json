@@ -168,16 +168,19 @@
 		],
 		"parameters": {
 			"SourceStore_Location": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "csv-parking-violations"
 			},
 			"SourceStore_Directory": {
 				"type": "String"
 			},
 			"DestinationStore_Location": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "csv-parking-violations"
 			},
 			"DestinationStore_Directory": {
-				"type": "String"
+				"type": "String",
+				"defaultValue": "copy"
 			}
 		},
 		"annotations": []
