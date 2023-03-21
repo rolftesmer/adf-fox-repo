@@ -55,6 +55,56 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/MyAIR-AUEast')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "Australia East",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 0,
+							"cleanup": false
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/MyAIR-AUSouthEast')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "Managed",
+				"typeProperties": {
+					"computeProperties": {
+						"location": "Australia Southeast",
+						"dataFlowProperties": {
+							"computeType": "General",
+							"coreCount": 8,
+							"timeToLive": 0,
+							"cleanup": false
+						}
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/MySHIR')]",
+			"type": "Microsoft.DataFactory/factories/integrationRuntimes",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"type": "SelfHosted",
+				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -66,10 +116,12 @@
 				},
 				"parameters": {
 					"Container": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "csv-parking-violations"
 					},
 					"Directory": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "copy"
 					},
 					"filename": {
 						"type": "string"
@@ -107,13 +159,15 @@
 				},
 				"parameters": {
 					"Container": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "csv-parking-violations"
 					},
 					"Directory": {
 						"type": "String"
 					},
 					"filename": {
-						"type": "string"
+						"type": "string",
+						"defaultValue": "NYC_2018_Parking_Violations_Issued-*.csv"
 					}
 				},
 				"annotations": [],
@@ -152,7 +206,8 @@
 				},
 				"parameters": {
 					"Container": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "csv-parking-violations"
 					},
 					"Directory": {
 						"type": "String"
@@ -519,52 +574,6 @@
 											}
 										}
 									]
-								},
-								{
-									"name": "DeleteAFile",
-									"description": "Delete a file from the source store",
-									"type": "Delete",
-									"dependsOn": [
-										{
-											"activity": "CopyAFile",
-											"dependencyConditions": [
-												"Succeeded"
-											]
-										}
-									],
-									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
-										"secureOutput": false,
-										"secureInput": false
-									},
-									"userProperties": [],
-									"typeProperties": {
-										"dataset": {
-											"referenceName": "BinaryDataSource_File",
-											"type": "DatasetReference",
-											"parameters": {
-												"Container": {
-													"value": "@pipeline().parameters.SourceStore_Location",
-													"type": "Expression"
-												},
-												"Directory": {
-													"value": "@pipeline().parameters.SourceStore_Directory",
-													"type": "Expression"
-												},
-												"filename": {
-													"value": "@item().name",
-													"type": "Expression"
-												}
-											}
-										},
-										"enableLogging": false,
-										"storeSettings": {
-											"type": "AzureBlobFSReadSettings",
-											"recursive": true
-										}
-									}
 								}
 							]
 						}
@@ -600,16 +609,19 @@
 				},
 				"parameters": {
 					"SourceStore_Location": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "csv-parking-violations"
 					},
 					"SourceStore_Directory": {
 						"type": "String"
 					},
 					"DestinationStore_Location": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "csv-parking-violations"
 					},
 					"DestinationStore_Directory": {
-						"type": "String"
+						"type": "String",
+						"defaultValue": "copy"
 					}
 				},
 				"annotations": []
