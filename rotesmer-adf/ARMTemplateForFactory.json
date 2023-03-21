@@ -195,7 +195,9 @@
 					}
 				],
 				"policy": {
-					"elapsedTimeMetric": {},
+					"elapsedTimeMetric": {
+						"duration": "0.00:10:00"
+					},
 					"cancelAfter": {}
 				},
 				"parameters": {
