@@ -166,6 +166,11 @@
 				}
 			}
 		],
+		"policy": {
+			"elapsedTimeMetric": {
+				"duration": "0.00:10:00"
+			}
+		},
 		"parameters": {
 			"SourceStore_Location": {
 				"type": "String",
