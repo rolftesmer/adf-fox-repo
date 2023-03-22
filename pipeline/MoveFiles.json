@@ -69,9 +69,9 @@
 							"type": "Copy",
 							"dependsOn": [],
 							"policy": {
-								"timeout": "7.00:00:00",
-								"retry": 0,
-								"retryIntervalInSeconds": 30,
+								"timeout": "0.01:00:00",
+								"retry": 3,
+								"retryIntervalInSeconds": 300,
 								"secureOutput": false,
 								"secureInput": false
 							},
@@ -95,7 +95,8 @@
 									}
 								},
 								"enableStaging": false,
-								"dataIntegrationUnits": 0
+								"parallelCopies": 32,
+								"dataIntegrationUnits": 2
 							},
 							"inputs": [
 								{
