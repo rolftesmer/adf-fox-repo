@@ -1,6 +1,12 @@
 {
 	"name": "rotesmer-adf",
 	"properties": {
+		"globalParameters": {
+			"env": {
+				"type": "string",
+				"value": "dev"
+			}
+		},
 		"globalConfigurations": {
 			"PipelineBillingEnabled": "true"
 		}
