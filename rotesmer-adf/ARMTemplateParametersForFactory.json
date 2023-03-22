@@ -5,14 +5,14 @@
 		"factoryName": {
 			"value": "rotesmer-adf"
 		},
-		"foxaueast_accountKey": {
-			"value": ""
-		},
-		"foxaueastsql_connectionString": {
-			"value": ""
+		"adfakv_properties_typeProperties_baseUrl": {
+			"value": "https://rotesmer-adf-akv.vault.azure.net/"
 		},
 		"foxaueast_properties_typeProperties_url": {
 			"value": "https://foxaueast.dfs.core.windows.net/"
+		},
+		"default_properties_env_value": {
+			"value": "dev"
 		}
 	}
 }

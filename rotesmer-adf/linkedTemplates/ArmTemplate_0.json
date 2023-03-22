@@ -7,13 +7,13 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "rotesmer-adf"
 		},
-		"foxaueast_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'foxaueast'"
+		"default_properties_env_value": {
+			"type": "string",
+			"defaultValue": "dev"
 		},
-		"foxaueastsql_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'foxaueastsql'"
+		"adfakv_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://rotesmer-adf-akv.vault.azure.net/"
 		},
 		"foxaueast_properties_typeProperties_url": {
 			"type": "string",
@@ -25,31 +25,26 @@
 	},
 	"resources": [
 		{
-			"name": "[concat(parameters('factoryName'), '/foxaueast')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"name": "[concat(parameters('factoryName'), '/default')]",
+			"type": "Microsoft.DataFactory/factories/globalparameters",
 			"apiVersion": "2018-06-01",
 			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('foxaueast_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "SecureString",
-						"value": "[parameters('foxaueast_accountKey')]"
-					}
+				"env": {
+					"type": "string",
+					"value": "[parameters('default_properties_env_value')]"
 				}
 			},
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/foxaueastsql')]",
+			"name": "[concat(parameters('factoryName'), '/adfakv')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"annotations": [],
-				"type": "AzureSqlDatabase",
+				"type": "AzureKeyVault",
 				"typeProperties": {
-					"connectionString": "[parameters('foxaueastsql_connectionString')]"
+					"baseUrl": "[parameters('adfakv_properties_typeProperties_baseUrl')]"
 				}
 			},
 			"dependsOn": []
@@ -103,6 +98,29 @@
 				"typeProperties": {}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/foxaueast')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('foxaueast_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "adfakv",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "foxaueast-storage-key"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/adfakv')]"
+			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/BinaryDataDestination')]",
@@ -506,9 +524,9 @@
 									"type": "Copy",
 									"dependsOn": [],
 									"policy": {
-										"timeout": "7.00:00:00",
-										"retry": 0,
-										"retryIntervalInSeconds": 30,
+										"timeout": "0.01:00:00",
+										"retry": 3,
+										"retryIntervalInSeconds": 300,
 										"secureOutput": false,
 										"secureInput": false
 									},
@@ -532,7 +550,8 @@
 											}
 										},
 										"enableStaging": false,
-										"dataIntegrationUnits": 0
+										"parallelCopies": 32,
+										"dataIntegrationUnits": 2
 									},
 									"inputs": [
 										{

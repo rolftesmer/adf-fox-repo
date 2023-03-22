@@ -7,17 +7,17 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "rotesmer-adf"
 		},
-		"foxaueast_accountKey": {
-			"type": "secureString",
-			"metadata": "Secure string for 'accountKey' of 'foxaueast'"
-		},
-		"foxaueastsql_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'foxaueastsql'"
+		"adfakv_properties_typeProperties_baseUrl": {
+			"type": "string",
+			"defaultValue": "https://rotesmer-adf-akv.vault.azure.net/"
 		},
 		"foxaueast_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://foxaueast.dfs.core.windows.net/"
+		},
+		"default_properties_env_value": {
+			"type": "string",
+			"defaultValue": "dev"
 		},
 		"containerUri": {
 			"type": "string",
@@ -46,11 +46,11 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
-					"foxaueast_accountKey": {
-						"value": "[parameters('foxaueast_accountKey')]"
+					"default_properties_env_value": {
+						"value": "[parameters('default_properties_env_value')]"
 					},
-					"foxaueastsql_connectionString": {
-						"value": "[parameters('foxaueastsql_connectionString')]"
+					"adfakv_properties_typeProperties_baseUrl": {
+						"value": "[parameters('adfakv_properties_typeProperties_baseUrl')]"
 					},
 					"foxaueast_properties_typeProperties_url": {
 						"value": "[parameters('foxaueast_properties_typeProperties_url')]"
