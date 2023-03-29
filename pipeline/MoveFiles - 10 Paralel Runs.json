@@ -165,22 +165,6 @@
 						"type": "Expression"
 					}
 				}
-			},
-			{
-				"name": "Wait For 10 Mins",
-				"type": "Wait",
-				"dependsOn": [
-					{
-						"activity": "ForEachFile",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"waitTimeInSeconds": 600
-				}
 			}
 		],
 		"policy": {
