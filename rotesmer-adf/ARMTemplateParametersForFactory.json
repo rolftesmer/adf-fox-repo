@@ -5,6 +5,9 @@
 		"factoryName": {
 			"value": "rotesmer-adf"
 		},
+		"SQLDB_AdventureWorks_connectionString": {
+			"value": ""
+		},
 		"adfakv_properties_typeProperties_baseUrl": {
 			"value": "https://rotesmer-adf-akv.vault.azure.net/"
 		},

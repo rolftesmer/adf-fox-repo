@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "rotesmer-adf"
 		},
+		"SQLDB_AdventureWorks_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SQLDB_AdventureWorks'"
+		},
 		"adfakv_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://rotesmer-adf-akv.vault.azure.net/"
@@ -45,6 +49,9 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
+					},
+					"SQLDB_AdventureWorks_connectionString": {
+						"value": "[parameters('SQLDB_AdventureWorks_connectionString')]"
 					},
 					"default_properties_env_value": {
 						"value": "[parameters('default_properties_env_value')]"
