@@ -8,6 +8,9 @@
 		"SQLDB_AdventureWorks_connectionString": {
 			"value": ""
 		},
+		"SQLDB_100M_DB_connectionString": {
+			"value": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=fox-au-east.database.windows.net;Initial Catalog=sqldb-100m-rows;User ID=rotesmer-admin"
+		},
 		"adfakv_properties_typeProperties_baseUrl": {
 			"value": "https://rotesmer-adf-akv.vault.azure.net/"
 		},

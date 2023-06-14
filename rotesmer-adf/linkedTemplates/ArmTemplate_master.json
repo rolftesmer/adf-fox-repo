@@ -11,6 +11,11 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SQLDB_AdventureWorks'"
 		},
+		"SQLDB_100M_DB_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SQLDB_100M_DB'",
+			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=fox-au-east.database.windows.net;Initial Catalog=sqldb-100m-rows;User ID=rotesmer-admin"
+		},
 		"adfakv_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://rotesmer-adf-akv.vault.azure.net/"
@@ -52,6 +57,9 @@
 					},
 					"SQLDB_AdventureWorks_connectionString": {
 						"value": "[parameters('SQLDB_AdventureWorks_connectionString')]"
+					},
+					"SQLDB_100M_DB_connectionString": {
+						"value": "[parameters('SQLDB_100M_DB_connectionString')]"
 					},
 					"default_properties_env_value": {
 						"value": "[parameters('default_properties_env_value')]"
