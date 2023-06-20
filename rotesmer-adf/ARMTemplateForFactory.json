@@ -7,14 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "rotesmer-adf"
 		},
-		"SQLDB_AdventureWorks_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SQLDB_AdventureWorks'"
-		},
 		"SQLDB_100M_DB_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SQLDB_100M_DB'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=fox-au-east.database.windows.net;Initial Catalog=sqldb-100m-rows;User ID=rotesmer-admin"
+		},
+		"SQLDB_AdventureWorks_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SQLDB_AdventureWorks'"
 		},
 		"adfakv_properties_typeProperties_baseUrl": {
 			"type": "string",
@@ -418,7 +418,7 @@
 						],
 						"userProperties": [],
 						"typeProperties": {
-							"waitTimeInSeconds": 600
+							"waitTimeInSeconds": 15
 						}
 					}
 				],
@@ -868,6 +868,29 @@
 			]
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/SQLDB_100M_DB')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('SQLDB_100M_DB_connectionString')]",
+					"password": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "adfakv",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "foxaueast-sql-pass"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/adfakv')]"
+			]
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/SQLDB_AdventureWorks')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -965,29 +988,6 @@
 				"typeProperties": {}
 			},
 			"dependsOn": []
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/SQLDB_100M_DB')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureSqlDatabase",
-				"typeProperties": {
-					"connectionString": "[parameters('SQLDB_100M_DB_connectionString')]",
-					"password": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "adfakv",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "foxaueast-sql-pass"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/adfakv')]"
-			]
 		},
 		{
 			"name": "[concat(parameters('factoryName'), '/default')]",

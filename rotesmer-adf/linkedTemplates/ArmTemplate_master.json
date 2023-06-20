@@ -7,14 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "rotesmer-adf"
 		},
-		"SQLDB_AdventureWorks_connectionString": {
-			"type": "secureString",
-			"metadata": "Secure string for 'connectionString' of 'SQLDB_AdventureWorks'"
-		},
 		"SQLDB_100M_DB_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SQLDB_100M_DB'",
 			"defaultValue": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=fox-au-east.database.windows.net;Initial Catalog=sqldb-100m-rows;User ID=rotesmer-admin"
+		},
+		"SQLDB_AdventureWorks_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'SQLDB_AdventureWorks'"
 		},
 		"adfakv_properties_typeProperties_baseUrl": {
 			"type": "string",

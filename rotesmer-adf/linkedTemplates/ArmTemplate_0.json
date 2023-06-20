@@ -207,29 +207,6 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/foxaueast')]",
-			"type": "Microsoft.DataFactory/factories/linkedServices",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"annotations": [],
-				"type": "AzureBlobFS",
-				"typeProperties": {
-					"url": "[parameters('foxaueast_properties_typeProperties_url')]",
-					"accountKey": {
-						"type": "AzureKeyVaultSecret",
-						"store": {
-							"referenceName": "adfakv",
-							"type": "LinkedServiceReference"
-						},
-						"secretName": "foxaueast-storage-key"
-					}
-				}
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/adfakv')]"
-			]
-		},
-		{
 			"name": "[concat(parameters('factoryName'), '/SQLDB_100M_DB')]",
 			"type": "Microsoft.DataFactory/factories/linkedServices",
 			"apiVersion": "2018-06-01",
@@ -245,6 +222,29 @@
 							"type": "LinkedServiceReference"
 						},
 						"secretName": "foxaueast-sql-pass"
+					}
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/adfakv')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/foxaueast')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureBlobFS",
+				"typeProperties": {
+					"url": "[parameters('foxaueast_properties_typeProperties_url')]",
+					"accountKey": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "adfakv",
+							"type": "LinkedServiceReference"
+						},
+						"secretName": "foxaueast-storage-key"
 					}
 				}
 			},
@@ -966,7 +966,7 @@
 						],
 						"userProperties": [],
 						"typeProperties": {
-							"waitTimeInSeconds": 600
+							"waitTimeInSeconds": 15
 						}
 					}
 				],
