@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SQLDB_AdventureWorks'"
 		},
+		"fox_au_east_sql_serverless_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'fox_au_east_sql_serverless'"
+		},
 		"SQLDB_100M_DB_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SQLDB_100M_DB'",
@@ -118,6 +122,19 @@
 			"properties": {
 				"type": "SelfHosted",
 				"typeProperties": {}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/fox_au_east_sql_serverless')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDW",
+				"typeProperties": {
+					"connectionString": "[parameters('fox_au_east_sql_serverless_connectionString')]"
+				}
 			},
 			"dependsOn": []
 		},
@@ -250,6 +267,43 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/adfakv')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Run Synapse SQL Serverless SP')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "p_QueryParkingViolations",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[p_QueryParkingViolations]"
+						},
+						"linkedServiceName": {
+							"referenceName": "fox_au_east_sql_serverless",
+							"type": "LinkedServiceReference"
+						}
+					}
+				],
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/fox_au_east_sql_serverless')]"
 			]
 		},
 		{

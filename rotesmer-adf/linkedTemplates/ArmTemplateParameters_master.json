@@ -11,6 +11,9 @@
 		"SQLDB_AdventureWorks_connectionString": {
 			"value": ""
 		},
+		"fox_au_east_sql_serverless_connectionString": {
+			"value": ""
+		},
 		"adfakv_properties_typeProperties_baseUrl": {
 			"value": "https://rotesmer-adf-akv.vault.azure.net/"
 		},

@@ -16,6 +16,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'SQLDB_AdventureWorks'"
 		},
+		"fox_au_east_sql_serverless_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'fox_au_east_sql_serverless'"
+		},
 		"adfakv_properties_typeProperties_baseUrl": {
 			"type": "string",
 			"defaultValue": "https://rotesmer-adf-akv.vault.azure.net/"
@@ -57,6 +61,9 @@
 					},
 					"SQLDB_AdventureWorks_connectionString": {
 						"value": "[parameters('SQLDB_AdventureWorks_connectionString')]"
+					},
+					"fox_au_east_sql_serverless_connectionString": {
+						"value": "[parameters('fox_au_east_sql_serverless_connectionString')]"
 					},
 					"SQLDB_100M_DB_connectionString": {
 						"value": "[parameters('SQLDB_100M_DB_connectionString')]"
