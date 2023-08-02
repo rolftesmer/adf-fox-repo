@@ -1,0 +1,12 @@
+{
+	"name": "fox_au_east_sql_serverless",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDW",
+		"typeProperties": {
+			"connectionString": "integrated security=False;encrypt=True;connection timeout=30;data source=fox-au-east-ondemand.sql.azuresynapse.net;initial catalog=fox-sql-serverless-dw;user id=rotesmer-admin",
+			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQEZEODcxQjM0LTY4QjQtNDE4NC04N0YxLTZFQTBDMEFBRjJCM19iYzg5NWM0Mi1iYmM0LTRmYzAtODFjZi1lZjc5YWYyYzY0MWUiDQp9"
+		}
+	}
+}
