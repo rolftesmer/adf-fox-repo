@@ -1,0 +1,28 @@
+{
+	"name": "Run Synapse SQL Serverless SP",
+	"properties": {
+		"activities": [
+			{
+				"name": "p_QueryParkingViolations",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.12:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[p_QueryParkingViolations]"
+				},
+				"linkedServiceName": {
+					"referenceName": "fox_au_east_sql_serverless",
+					"type": "LinkedServiceReference"
+				}
+			}
+		],
+		"annotations": []
+	}
+}
